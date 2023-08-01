@@ -1,0 +1,26 @@
+diff --git a/arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi b/arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi
+index e29907428c20..0e22f038cb07 100644
+--- a/arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi
++++ b/arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi
+@@ -66,10 +66,18 @@ mcp2515: can@0 {
+ &i2c1 {
+ 	status = "okay";
+ 
+-	/* M41T0M6 real time clock on carrier board */
+-	m41t0m6: rtc@68 {
+-		compatible = "st,m41t0";
++	/* INA219 hwmon */
++	power-sensor@40 {
++        compatible = "ti,ina219";
++        reg = <0x40>;
++        shunt-resistor = <100000>;
++    };
++
++	/* DS3231 real time clock */
++	ds3231: rtc@68 {
++		compatible = "maxim,ds3231";
+ 		reg = <0x68>;
++		#clock-cells = <1>;
+ 	};
+ };
+ 
