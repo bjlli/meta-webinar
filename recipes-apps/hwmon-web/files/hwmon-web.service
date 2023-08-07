@@ -1,0 +1,14 @@
+[Unit]
+Description= HWMON Web Page
+After=getty.target
+
+[Service]
+ExecStartPre=/bin/sleep 2
+ExecStart=python3 /usr/bin/hwmon-web/app.py
+Restart=on-failure
+RestartSec=5s
+User=root
+TimeoutStopSec=1
+
+[Install]
+WantedBy=multi-user.target
