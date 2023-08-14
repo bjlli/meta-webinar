@@ -1,15 +1,16 @@
-diff --git a/arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi b/arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi
-index e29907428c20..0e22f038cb07 100644
---- a/arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi
-+++ b/arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi
-@@ -66,10 +66,18 @@ mcp2515: can@0 {
+diff --git a/arch/arm/boot/dts/imx6ull-colibri-aster.dtsi b/arch/arm/boot/dts/imx6ull-colibri-aster.dtsi
+index de4dc7c1a03a..9c90cb76dd24 100644
+--- a/arch/arm/boot/dts/imx6ull-colibri-aster.dtsi
++++ b/arch/arm/boot/dts/imx6ull-colibri-aster.dtsi
+@@ -91,10 +91,20 @@ &gpio4 28 GPIO_ACTIVE_HIGH /* SODIMM 65 CSI_DATA07 */
  &i2c1 {
  	status = "okay";
  
--	/* M41T0M6 real time clock on carrier board */
 -	m41t0m6: rtc@68 {
 -		compatible = "st,m41t0";
-+	/* INA219 hwmon */
+-		reg = <0x68>;
+-	};
++    /* INA219 hwmon */
 +	power-sensor@40 {
 +        compatible = "ti,ina219";
 +        reg = <0x40>;
@@ -19,8 +20,10 @@ index e29907428c20..0e22f038cb07 100644
 +	/* DS3231 real time clock */
 +	ds3231: rtc@68 {
 +		compatible = "maxim,ds3231";
- 		reg = <0x68>;
++ 		reg = <0x68>;
 +		#clock-cells = <1>;
- 	};
++ 	};
++
  };
  
+ /* PWM <A> */
